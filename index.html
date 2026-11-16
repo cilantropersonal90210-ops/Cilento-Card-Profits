@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101820">
+<title>Cilento Card Profits | Sports Card Boutique</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #101820;
+  --navy-light: #192631;
+  --gold: #c5a878;
+  --cream: #f6f3ed;
+  --muted: #a8aaa9;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.topbar {
+  background: #0b1218;
+  color: #d6c5a6;
+  text-align: center;
+  padding: 9px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 22px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(197,168,120,.2);
+}
+
+.brand { text-decoration: none; color: white; }
+
+.brand h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: .5px;
+}
+
+.brand span {
+  display: block;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 4px;
+  margin-top: 4px;
+}
+
+nav { display: flex; align-items: center; gap: 27px; }
+
+nav a {
+  color: #e5e4df;
+  text-decoration: none;
+  font-size: 12px;
+  transition: color .2s;
+}
+
+nav a:hover { color: var(--gold); }
+
+.cart-button {
+  background: transparent;
+  color: white;
+  border: 1px solid #74664f;
+  padding: 10px 15px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.hero {
+  min-height: 440px;
+  background:
+    linear-gradient(90deg, rgba(10,17,23,.97), rgba(10,17,23,.77), rgba(10,17,23,.35)),
+    radial-gradient(ellipse at 80% 40%, #59616a, transparent 50%),
+    linear-gradient(130deg, #192b38, #101820 65%, #29343b);
+  color: white;
+  padding: 85px 8%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content { max-width: 610px; }
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(39px, 6vw, 68px);
+  line-height: 1.12;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: #d0d2d0;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 450px;
+  margin-bottom: 30px;
+}
+
+.gold-button {
+  background: var(--gold);
+  color: #101820;
+  border: 0;
+  padding: 14px 24px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+.gold-button:hover {
+  background: #dfc69e;
+  transform: translateY(-2px);
+}
+
+.section {
+  padding: 65px 7%;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 500;
+}
+
+.section-heading p {
+  color: #777b7c;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.filter {
+  background: transparent;
+  border: 1px solid #d9d5cc;
+  color: #50585c;
+  padding: 9px 15px;
+  border-radius: 30px;
+  font-size: 11px;
+}
+
+.filter.active, .filter:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+.search {
+  width: 100%;
+  max-width: 290px;
+  border: 1px solid #dedad2;
+  background: white;
+  border-radius: 3px;
+  padding: 12px;
+  font-size: 12px;
+  outline: none;
+}
+
+.search:focus { border-color: var(--gold); }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #e9e5dd;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(20,30,40,.08);
+}
+
+.product-art {
+  height: 230px;
+  background: linear-gradient(145deg, #1d3040, #101820);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-art::before {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 1px solid rgba(197,168,120,.28);
+  border-radius: 50%;
+}
+
+.product-art::after {
+  content: "";
+  position: absolute;
+  width: 145px;
+  height: 190px;
+  border: 1px solid rgba(197,168,120,.22);
+  transform: rotate(12deg);
+}
+
+.card-design {
+  width: 116px;
+  height: 165px;
+  z-index: 1;
+  border: 2px solid #c5a878;
+  border-radius: 5px;
+  background: linear-gradient(150deg, #334d5c, #101820);
+  color: #f3e5c9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px;
+  box-shadow: 0 10px 25px #080d12;
+  transform: rotate(-5deg);
+  text-align: center;
+}
+
+.card-design .sport {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.card-design strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+}
+
+.card-design small { font-size: 8px; letter-spacing: 1px; }
+
+.card-design .symbol { font-size: 39px; color: #d7bd8e; }
+
+.product-info { padding: 17px; }
+
+.product-category {
+  font-size: 9px;
+  color: #a08457;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.product-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 9px 0 5px;
+}
+
+.product-info .details {
+  font-size: 10px;
+  color: #85898a;
+  min-height: 16px;
+}
+
+.product-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 17px;
+  gap: 8px;
+}
+
+.price { font-size: 17px; font-weight: 700; }
+
+.add-button {
+  background: var(--navy);
+  border: 0;
+  color: white;
+  padding: 10px 12px;
+  font-size: 10px;
+  border-radius: 2px;
+}
+
+.add-button:hover { background: #314653; }
+
+.empty {
+  grid-column: 1/-1;
+  padding: 50px;
+  text-align: center;
+  color: #777;
+}
+
+.about {
+  background: #eae5da;
+  text-align: center;
+  padding: 65px 20px;
+}
+
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.about p {
+  max-width: 560px;
+  margin: auto;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #62686a;
+}
+
+footer {
+  background: #0b1218;
+  color: #b8b9b5;
+  text-align: center;
+  padding: 35px 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+footer strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 10;
+}
+
+.overlay.open { display: block; }
+
+.cart-panel {
+  position: fixed;
+  z-index: 11;
+  right: -420px;
+  top: 0;
+  height: 100%;
+  width: min(400px, 100%);
+  background: var(--cream);
+  padding: 25px;
+  transition: right .3s;
+  overflow-y: auto;
+}
+
+.cart-panel.open { right: 0; }
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.cart-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+}
+
+.close {
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd7cc;
+  font-size: 12px;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 0;
+  font-weight: 700;
+}
+
+.checkout-note {
+  font-size: 11px;
+  color: #777;
+  line-height: 1.7;
+  margin-top: 14px;
+}
+
+@media(max-width: 950px) {
+  .products { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  header { padding: 20px 5%; }
+  nav { gap: 15px; }
+}
+
+@media(max-width: 650px) {
+  header { flex-wrap: wrap; padding: 18px 5%; }
+  .brand h1 { font-size: 21px; }
+  nav { order: 3; width: 100%; justify-content: space-between; gap: 8px; }
+  nav a { font-size: 10px; }
+  .hero { min-height: 390px; padding: 65px 7%; }
+  .section { padding: 48px 5%; }
+  .section-heading { align-items: start; flex-direction: column; }
+  .section-heading h2 { font-size: 29px; }
+  .search { max-width: none; }
+  .products { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+  .product-art { height: 180px; }
+  .card-design { transform: scale(.85) rotate(-5deg); }
+  .product-info { padding: 12px; }
+  .product-info h3 { font-size: 15px; }
+  .product-bottom { align-items: start; flex-direction: column; }
+  .add-button { width: 100%; padding: 11px; }
+}
+
+@media(max-width: 360px) {
+  .products { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">A curated collection of sports cards · Cilento Card Profits</div>
+
+<header>
+  <a href="#" class="brand">
+    <h1>Cilento Card Profits</h1>
+    <span>THE ART OF THE HOBBY</span>
+  </a>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#shop">Shop Cards</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <button class="cart-button" onclick="openCart()">
+    Bag (<span id="cart-count">0</span>)
+  </button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">CILENTO CARD PROFITS · EST. 2026</div>
+      <h2>Great cards.<br>Worth collecting.</h2>
+      <p>
+        Discover a carefully curated selection of sports cards,
+        rookies, parallels, and special finds. Find your next
+        favorite addition to the collection.
+      </p>
+      <a href="#shop">
+        <button class="gold-button">Explore the collection</button>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="shop">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">THE COLLECTION</div>
+        <h2>Shop our cards</h2>
+        <p>Find something special for your collection.</p>
+      </div>
+      <input class="search" id="search" placeholder="Search players or cards..." oninput="renderProducts()">
+    </div>
+
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('All',this)">All cards</button>
+      <button class="filter" onclick="setFilter('Football',this)">Football</button>
+      <button class="filter" onclick="setFilter('Basketball',this)">Basketball</button>
+      <button class="filter" onclick="setFilter('Baseball',this)">Baseball</button>
+      <button class="filter" onclick="setFilter('Other',this)">Other</button>
+    </div>
+
+    <div class="products" id="products"></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="eyebrow">OUR PHILOSOPHY</div>
+    <h2>More than a card.</h2>
+    <p>
+      At Cilento Card Profits, we appreciate the stories,
+      the players, and the details behind every card.
+      Whether you're collecting your favorites or discovering
+      something new, we're glad you're here.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <strong>Cilento Card Profits</strong>
+  THE HOBBY. THE COLLECTION. THE COMMUNITY.
+  <p style="margin-top:14px;">© 2026 Cilento Card Profits. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart-panel" id="cart">
+  <div class="cart-header">
+    <h2>Your shopping bag</h2>
+    <button class="close" onclick="closeCart()">×</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="cart-total">
+    <span>Subtotal</span>
+    <span id="cart-total">$0.00</span>
+  </div>
+  <button class="gold-button" style="width:100%" onclick="checkout()">
+    Continue to checkout
+  </button>
+  <p class="checkout-note">
+    This is a storefront preview. Secure payment processing
+    has not been connected yet. No payment information is collected.
+  </p>
+</aside>
+
+<script>
+// ============================================
+// YOUR INVENTORY
+// Edit this list to change the cards displayed.
+// Price is in USD. Categories: Football,
+// Basketball, Baseball, or Other.
+// ============================================
+
+const products = [
+  {
+    id: 1,
+    name: "Rookie Card",
+    player: "Featured Football Rookie",
+    category: "Football",
+    price: 15.00,
+    condition: "Ungraded",
+    symbol: "🏈",
+    label: "ROOKIE"
+  },
+  {
+    id: 2,
+    name: "Premium Parallel",
+    player: "Featured Basketball Card",
+    category: "Basketball",
+    price: 22.00,
+    condition: "Ungraded",
+    symbol: "🏀",
+    label: "PARALLEL"
+  },
+  {
+    id: 3,
+    name: "Numbered Edition",
+    player: "Featured Football Card",
+    category: "Football",
+    price: 35.00,
+    condition: "Ungraded",
+    symbol: "✦",
+    label: "NUMBERED"
+  },
+  {
+    id: 4,
+    name: "Collector's Choice",
+    player: "Featured Baseball Card",
+    category: "Baseball",
+    price: 12.00,
+    condition: "Ungraded",
+    symbol: "⚾",
+    label: "COLLECTOR"
+  }
+];
+
+let cart = [];
+let currentFilter = "All";
+
+function renderProducts() {
+  const container = document.getElementById("products");
+  const search = document.getElementById("search").value.toLowerCase();
+
+  const filtered = products.filter(p => {
+    const matchesCategory =
+      currentFilter === "All" || p.category === currentFilter;
+
+    const matchesSearch =
+      p.name.toLowerCase().includes(search) ||
+      p.player.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="empty">No cards found. Try another search.</div>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(p => `
+    <article class="product-card">
+      <div class="product-art">
+        <div class="card-design">
+          <span class="sport">${p.category.toUpperCase()}</span>
+          <span class="symbol">${p.symbol}</span>
+          <strong>${escapeHTML(p.player)}</strong>
+          <small>${p.label}</small>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${escapeHTML(p.category)}</div>
+        <h3>${escapeHTML(p.name)}</h3>
+        <div class="details">${escapeHTML(p.condition)}</div>
+        <div class="product-bottom">
+          <span class="price">$${p.price.toFixed(2)}</span>
+          <button class="add-button" onclick="addToCart(${p.id})">
+            Add to bag +
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function setFilter(category, button) {
+  currentFilter = category;
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  renderProducts();
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+
+  cart.push(product);
+  updateCart();
+  openCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent = cart.length;
+
+  const items = document.getElementById("cart-items");
+
+  if (cart.length === 0) {
+    items.innerHTML = "<p>Your bag is currently empty.</p>";
+  } else {
+    items.innerHTML = cart.map((p, index) => `
+      <div class="cart-item">
+        <div>
+          <strong>${escapeHTML(p.name)}</strong><br>
+          <span>${escapeHTML(p.player)}</span>
+        </div>
+        <div>
+          $${p.price.toFixed(2)}
+          <button onclick="removeItem(${index})"
+            style="display:block;border:0;background:none;color:#8c5b4a;font-size:10px;margin-top:5px;">
+            Remove
+          </button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  const total = cart.reduce((sum, p) => sum + p.price, 0);
+  document.getElementById("cart-total").textContent = "$" + total.toFixed(2);
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+function openCart() {
+  document.getElementById("cart").classList.add("open");
+  document.getElementById("overlay").classList.add("open");
+}
+
+function closeCart() {
+  document.getElementById("cart").classList.remove("open");
+  document.getElementById("overlay").classList.remove("open");
+}
+
+function checkout() {
+  alert("Online checkout is not connected yet. No payment has been taken.");
+}
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
